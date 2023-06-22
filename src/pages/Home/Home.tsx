@@ -1,37 +1,10 @@
-import ListElement from '@components/ListElement';
+import ListElement from '@components/ListElement/ListElement';
+import { FormTitle } from '@constants/index';
+import { Wrapper } from '@styles/index';
+import { Product } from '@typing/global';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-
-export interface Product {
-    _id: string;
-    name: string;
-    price: number;
-    stock: number;
-    date: string;
-    category: string;
-    __v: number;
-}
-
-const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
-
-const AddButton = styled.button`
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    background-color: green;
-    margin: 25px 0;
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-        cursor: pointer;
-        background-color: gray;
-    }
-`;
+import { AddButton } from './styles';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -70,7 +43,7 @@ const Home = () => {
                 onClick={() =>
                     navigate('add', {
                         state: {
-                            currentFormName: 'Add form',
+                            currentFormTitle: FormTitle.ADD_FORM,
                         },
                     })
                 }
