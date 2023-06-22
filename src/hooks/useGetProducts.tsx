@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const useGetProducts = async (): Promise<Product[]> => {
     try {
-        const response =  await axios.get(`${BACKEND_URL}/products`);
+        const response = await axios.get(`${BACKEND_URL}/products`);
         return response.data;
     } catch (error) {
         console.error(error);

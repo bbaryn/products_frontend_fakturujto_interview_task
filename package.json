@@ -11,13 +11,6 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.tsx\" --fix",
     "format": "prettier --write \"src/**/*.tsx\" \"test/**/*.tsx\""
   },
-  "lint-staged": {
-    "src/**/*.{ts,tsx,json}": [
-      "prettier --write",
-      "eslint src --fix",
-      "jest --bail --findRelatedTests --passWithNoTests"
-    ]
-  },
   "keywords": [],
   "author": "",
   "license": "",

@@ -27,12 +27,12 @@ const Home = () => {
     return (
         <Wrapper>
             <AddButton
-                onClick={() =>{
+                onClick={() => {
                     navigate('add', {
                         state: {
                             currentFormTitle: FormTitle.ADD_FORM,
                         },
-                    })
+                    });
                 }}
             >
                 Add

@@ -14,6 +14,8 @@ export const DetailContainer = ({ product }: Props): JSX.Element => (
             {`Date: ${new Date(product.date).toISOString().substring(0, 10)}`}
         </DetailElement>
         <DetailElement>{`Category: ${product.category}`}</DetailElement>
-        <DetailElement>{`Description: ${product?.description ?? ''}`}</DetailElement>
+        <DetailElement>{`Description: ${
+            product?.description ?? ''
+        }`}</DetailElement>
     </Container>
 );

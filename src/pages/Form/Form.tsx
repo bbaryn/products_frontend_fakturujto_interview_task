@@ -57,26 +57,21 @@ const FormikForm = () => {
             date: new Date(values.date).toISOString(),
         };
         if (location.state.currentFormTitle === FormTitle.EDIT_FORM) {
-            useEditProduct(formattedValues, values._id).then(
-                () => {
-                    dispatch(
-                        editProduct(formattedValues)
-                    );
-                    alert('Product has been edited')
-                }
-            ).catch(() => alert('Something goes wrong'))
+            useEditProduct(formattedValues, values._id)
+                .then(() => {
+                    dispatch(editProduct(formattedValues));
+                    alert('Product has been edited');
+                })
+                .catch(() => alert('Something goes wrong'));
         }
 
         if (location.state.currentFormTitle === FormTitle.ADD_FORM) {
-            useAddProduct(formattedValues).then(
-                (response) => {
-                    dispatch(
-                        addProduct(response)
-                    );
-                    alert('Product has been added')
-                }
-            ).catch(() => alert('Something goes wrong'))
-
+            useAddProduct(formattedValues)
+                .then((response) => {
+                    dispatch(addProduct(response));
+                    alert('Product has been added');
+                })
+                .catch(() => alert('Something goes wrong'));
         }
 
         navigate('/');
