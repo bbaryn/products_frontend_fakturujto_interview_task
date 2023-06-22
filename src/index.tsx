@@ -1,13 +1,10 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import {
-    RouterProvider,
-  } from "react-router-dom";
+import { RouterProvider } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 
 import configureAppStore, { getPreloadedState } from './store/configureStore';
 import { router } from './router';
-
 
 (() => {
     const preloadedState = getPreloadedState();

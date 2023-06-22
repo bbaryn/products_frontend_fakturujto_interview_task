@@ -4,14 +4,14 @@ import styled from 'styled-components';
 import { Product } from '../pages/Home/Home';
 import { useNavigate } from 'react-router-dom';
 
-//const ListElement = (productName: string, productPrice: number, productStock: number, productProductionDate: string, productCategory: string, productDescription: string) 
+//const ListElement = (productName: string, productPrice: number, productStock: number, productProductionDate: string, productCategory: string, productDescription: string)
 
 interface Props {
     product: Product;
 }
 
 const Wrapper = styled.div`
-display: flex;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: baseline;
@@ -33,10 +33,10 @@ const ListContainer = styled.div`
     &:hover {
         cursor: pointer;
         background-color: lightgray;
-      }
+    }
 `;
 const DetailsContainer = styled.div`
-display: flex;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -78,41 +78,50 @@ const DeleteButton = styled(Button)`
     background-color: red;
 `;
 
-const ListElement = ({product}: Props): JSX.Element => {
+const ListElement = ({ product }: Props): JSX.Element => {
     const [isDetailsShow, setIsDetailsShow] = useState(false);
     const navigate = useNavigate();
     const handleElementClick = () => {
         setIsDetailsShow(!isDetailsShow);
-    }
+    };
 
     const handleEditButtonClick = (e: MouseEvent<HTMLElement>) => {
         e.stopPropagation();
         navigate(`${product._id}/edit`, {
             state: {
                 productId: product._id,
-              currentFormName: 'Edit form',
-            }})
-    }
+                currentFormName: 'Edit form',
+            },
+        });
+    };
 
     const handleDeleteButtonClick = (e: MouseEvent<HTMLElement>) => {
         e.stopPropagation();
-    }
+    };
 
     return (
         <Wrapper>
             <ListContainer onClick={handleElementClick}>
                 <Title>{product.name}</Title>
                 <ButtonContainer>
-                    <EditButton onClick={handleEditButtonClick}>Edit</EditButton>
-                    <DeleteButton onClick={handleDeleteButtonClick}>Delete</DeleteButton>
+                    <EditButton onClick={handleEditButtonClick}>
+                        Edit
+                    </EditButton>
+                    <DeleteButton onClick={handleDeleteButtonClick}>
+                        Delete
+                    </DeleteButton>
                 </ButtonContainer>
             </ListContainer>
-            {isDetailsShow && <DetailsContainer>
-                <DetailsElement>{product.price}</DetailsElement>
-                <DetailsElement>{product.stock}</DetailsElement>
-                <DetailsElement>{new Date(product.date).toISOString().substring(0, 10)}</DetailsElement>
-                <DetailsElement>{product.category}</DetailsElement>
-            </DetailsContainer>}
+            {isDetailsShow && (
+                <DetailsContainer>
+                    <DetailsElement>{product.price}</DetailsElement>
+                    <DetailsElement>{product.stock}</DetailsElement>
+                    <DetailsElement>
+                        {new Date(product.date).toISOString().substring(0, 10)}
+                    </DetailsElement>
+                    <DetailsElement>{product.category}</DetailsElement>
+                </DetailsContainer>
+            )}
         </Wrapper>
     );
 };

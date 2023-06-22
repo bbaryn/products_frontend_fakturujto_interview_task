@@ -6,15 +6,15 @@ import Form from './pages/Form/Form';
 
 export const router = createBrowserRouter([
     {
-        path: "/",
+        path: '/',
         element: <Home />,
     },
     {
-        path: "/add",
+        path: '/add',
         element: <Form />,
     },
     {
-        path: "/:id/edit",
+        path: '/:id/edit',
         element: <Form />,
     },
-  ]);
+]);
