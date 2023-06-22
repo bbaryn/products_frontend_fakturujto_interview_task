@@ -7,3 +7,8 @@ export interface Product {
     category: string;
     __v: number;
 }
+
+export interface InitialState {
+    products: Product[];
+    currentElementId: string;
+}

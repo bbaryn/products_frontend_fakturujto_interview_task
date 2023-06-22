@@ -3,6 +3,12 @@ import { Formik, Field, Form } from 'formik';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Wrapper } from '@styles/index';
 import { BackButton, Label, Submit, Title, fieldStyle } from './styles';
+import { FormTitle } from '@constants/index';
+import { useAppSelector } from '@store/hooks';
+import { selectProduct } from '@store/shape/selectors';
+import { useDispatch } from 'react-redux';
+import { addProduct, editProduct } from '@store/shape/slice';
+import { Product } from '@typing/global';
 
 const initialValues = {
     name: '',
@@ -14,16 +20,35 @@ const initialValues = {
 };
 
 const Forms = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
-    const onSubmit = (values: any) => {
-        console.log(values);
+    const onSubmit = (values: Product) => {
+        if (location.state.currentFormTitle === FormTitle.EDIT_FORM) {
+            dispatch(editProduct(values))
+        }
+
+        if (location.state.currentFormTitle === FormTitle.ADD_FORM) {
+            dispatch(addProduct(values))
+        }
+
         navigate('/');
     };
 
+    const setupInitialValues = (currentFormTitle: string) => {
+        switch (currentFormTitle) {
+            case FormTitle.ADD_FORM:
+                return initialValues
+            case FormTitle.EDIT_FORM:
+                return useAppSelector(selectProduct)
+            default:
+                return initialValues;
+        }
+    }
+
     return (
         <>
-            <Formik initialValues={initialValues} onSubmit={onSubmit}>
+            <Formik initialValues={setupInitialValues(location.state.currentFormTitle)} onSubmit={onSubmit}>
                 {({
                     values,
                     errors,
