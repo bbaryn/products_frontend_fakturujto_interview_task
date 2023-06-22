@@ -13,11 +13,11 @@ import { selectProducts } from '@store/shape/selectors';
 const Home = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+
     useEffect(() => {
-      dispatch(addProducts(products));
-    }, [])
-    
+        dispatch(addProducts(products));
+    }, []);
+
     const storedProducts = useAppSelector(selectProducts);
 
     return (

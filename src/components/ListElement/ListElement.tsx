@@ -23,7 +23,7 @@ const ListElement = ({ product }: Props): JSX.Element => {
 
     const handleEditButtonClick = (e: MouseEvent<HTMLElement>) => {
         e.stopPropagation();
-        dispatch(addCurrentElementId(product._id))
+        dispatch(addCurrentElementId(product._id));
         navigate(`${product._id}/edit`, {
             state: {
                 currentFormTitle: FormTitle.EDIT_FORM,
@@ -34,7 +34,7 @@ const ListElement = ({ product }: Props): JSX.Element => {
 
     const handleDeleteButtonClick = (e: MouseEvent<HTMLElement>) => {
         e.stopPropagation();
-        dispatch(deleteProduct(product._id))
+        dispatch(deleteProduct(product._id));
     };
 
     return (

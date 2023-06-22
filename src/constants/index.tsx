@@ -1,4 +1,4 @@
-import { Product } from "@typing/global";
+import { Product } from '@typing/global';
 
 export enum FormTitle {
     ADD_FORM = 'Add form',

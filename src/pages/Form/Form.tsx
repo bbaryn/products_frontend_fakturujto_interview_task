@@ -25,11 +25,11 @@ const Forms = () => {
     const location = useLocation();
     const onSubmit = (values: Product) => {
         if (location.state.currentFormTitle === FormTitle.EDIT_FORM) {
-            dispatch(editProduct(values))
+            dispatch(editProduct(values));
         }
 
         if (location.state.currentFormTitle === FormTitle.ADD_FORM) {
-            dispatch(addProduct(values))
+            dispatch(addProduct(values));
         }
 
         navigate('/');
@@ -38,17 +38,22 @@ const Forms = () => {
     const setupInitialValues = (currentFormTitle: string) => {
         switch (currentFormTitle) {
             case FormTitle.ADD_FORM:
-                return initialValues
+                return initialValues;
             case FormTitle.EDIT_FORM:
-                return useAppSelector(selectProduct)
+                return useAppSelector(selectProduct);
             default:
                 return initialValues;
         }
-    }
+    };
 
     return (
         <>
-            <Formik initialValues={setupInitialValues(location.state.currentFormTitle)} onSubmit={onSubmit}>
+            <Formik
+                initialValues={setupInitialValues(
+                    location.state.currentFormTitle
+                )}
+                onSubmit={onSubmit}
+            >
                 {({
                     values,
                     errors,
