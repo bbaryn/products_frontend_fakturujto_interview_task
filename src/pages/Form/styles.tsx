@@ -1,7 +1,14 @@
 import { styled } from 'styled-components';
 
+export const FormWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
 export const BackButton = styled.button`
     color: white;
+    width: 250px;
     padding: 10px 20px;
     border-radius: 5px;
     border: none;
@@ -60,6 +67,11 @@ export const Submit = styled.button`
             cursor: not-allowed;
         }
     }
+`;
+
+export const ErrorMessage = styled.div`
+    color: red;
+    font-weight: bold;
 `;
 
 export const fieldStyle = {

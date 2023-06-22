@@ -5,6 +5,7 @@ export interface Product {
     stock: number;
     date: string;
     category: string;
+    description?: string;
     __v: number;
 }
 

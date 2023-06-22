@@ -4,6 +4,11 @@ export enum FormTitle {
     ADD_FORM = 'Add form',
     EDIT_FORM = 'Edit form',
 }
+export enum CategoryType {
+    SMARTPHONES = 'smartphones',
+    LAPTOPS = 'laptops',
+    DISPLAYS = 'displays',
+}
 
 export const products: Product[] = [
     {

@@ -43,6 +43,10 @@ module.exports =  (env, options)=> {
                     loader: 'babel-loader'
                 },
                 {
+                    test: /\.(sass|less|css)$/,
+                    use: ["style-loader", "css-loader"],
+                  },
+                {
                     test: /\.css$/i,
                     include: path.resolve(__dirname, 'src'),
                     use: [
