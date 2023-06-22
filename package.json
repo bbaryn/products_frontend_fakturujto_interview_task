@@ -7,7 +7,9 @@
     "test": "jest --passWithNoTests",
     "start": "webpack serve --mode development --open",
     "dev": "webpack --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,json}": [
