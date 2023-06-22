@@ -20,6 +20,8 @@ import {
     Title,
     fieldStyle,
 } from './styles';
+import useEditProduct from '@hooks/useEditProduct';
+import useAddProduct from '@hooks/useAddProduct';
 
 const initialValues = {
     name: '',
@@ -50,22 +52,31 @@ const FormikForm = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const onSubmit = (values: Product) => {
+        const formattedValues = {
+            ...values,
+            date: new Date(values.date).toISOString(),
+        };
         if (location.state.currentFormTitle === FormTitle.EDIT_FORM) {
-            dispatch(
-                editProduct({
-                    ...values,
-                    date: new Date(values.date).toISOString(),
-                })
-            );
+            useEditProduct(formattedValues, values._id).then(
+                () => {
+                    dispatch(
+                        editProduct(formattedValues)
+                    );
+                    alert('Product has been edited')
+                }
+            ).catch(() => alert('Something goes wrong'))
         }
 
         if (location.state.currentFormTitle === FormTitle.ADD_FORM) {
-            dispatch(
-                addProduct({
-                    ...values,
-                    date: new Date(values.date).toISOString(),
-                })
-            );
+            useAddProduct(formattedValues).then(
+                (response) => {
+                    dispatch(
+                        addProduct(response)
+                    );
+                    alert('Product has been added')
+                }
+            ).catch(() => alert('Something goes wrong'))
+
         }
 
         navigate('/');

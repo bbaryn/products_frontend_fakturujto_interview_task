@@ -8,11 +8,12 @@ interface Props {
 
 export const DetailContainer = ({ product }: Props): JSX.Element => (
     <Container>
-        <DetailElement>{product.price}</DetailElement>
-        <DetailElement>{product.stock}</DetailElement>
+        <DetailElement>{`Price: ${product.price}`}</DetailElement>
+        <DetailElement>{`Stock: ${product.stock}`}</DetailElement>
         <DetailElement>
-            {new Date(product.date).toISOString().substring(0, 10)}
+            {`Date: ${new Date(product.date).toISOString().substring(0, 10)}`}
         </DetailElement>
-        <DetailElement>{product.category}</DetailElement>
+        <DetailElement>{`Category: ${product.category}`}</DetailElement>
+        <DetailElement>{`Description: ${product?.description ?? ''}`}</DetailElement>
     </Container>
 );

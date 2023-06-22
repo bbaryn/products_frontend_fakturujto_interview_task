@@ -1,5 +1,7 @@
 import { Product } from '@typing/global';
 
+export const BACKEND_URL = 'http://localhost:3000';
+
 export enum FormTitle {
     ADD_FORM = 'Add form',
     EDIT_FORM = 'Edit form',
