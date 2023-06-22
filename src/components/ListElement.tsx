@@ -2,6 +2,7 @@ import React, { MouseEvent, useState } from 'react';
 
 import styled from 'styled-components';
 import { Product } from '../pages/Home/Home';
+import { useNavigate } from 'react-router-dom';
 
 //const ListElement = (productName: string, productPrice: number, productStock: number, productProductionDate: string, productCategory: string, productDescription: string) 
 
@@ -78,17 +79,23 @@ const DeleteButton = styled(Button)`
 `;
 
 const ListElement = ({product}: Props): JSX.Element => {
-    const [isDetailsShow, setIsDetailsShow] = useState(false)
+    const [isDetailsShow, setIsDetailsShow] = useState(false);
+    const navigate = useNavigate();
     const handleElementClick = () => {
-        setIsDetailsShow(!isDetailsShow)
+        setIsDetailsShow(!isDetailsShow);
     }
 
     const handleEditButtonClick = (e: MouseEvent<HTMLElement>) => {
-        e.stopPropagation()
+        e.stopPropagation();
+        navigate(`${product._id}/edit`, {
+            state: {
+                productId: product._id,
+              currentFormName: 'Edit form',
+            }})
     }
 
     const handleDeleteButtonClick = (e: MouseEvent<HTMLElement>) => {
-        e.stopPropagation()
+        e.stopPropagation();
     }
 
     return (

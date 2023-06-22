@@ -1,5 +1,6 @@
 import ListElement from '@components/ListElement';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 export interface Product {
@@ -33,6 +34,7 @@ const AddButton = styled.button`
 `;
 
 const Home = () => {
+    const navigate = useNavigate();
     const products: Product[] = [
         {
             "_id": "6491e6728a77308990e48511",
@@ -64,7 +66,11 @@ const Home = () => {
     ]
     return (
         <Wrapper>
-            <AddButton>Add</AddButton>
+            <AddButton onClick={() => navigate('add', {
+      state: {
+        currentFormName: 'Add form',
+      }
+    })}>Add</AddButton>
             {products.map(product => <ListElement product={product}/>)}
         </Wrapper>
     );
