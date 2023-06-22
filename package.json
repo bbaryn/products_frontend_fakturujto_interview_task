@@ -1,5 +1,5 @@
 {
-  "name": "react-redux-boilerplate",
+  "name": "products_frontend_fakturujto_interview_task",
   "version": "1.0.0",
   "description": "Start React+Redux project with TypeScript in an easier and faster way",
   "main": "index.js",
@@ -7,8 +7,7 @@
     "test": "jest --passWithNoTests",
     "start": "webpack serve --mode development --open",
     "dev": "webpack --mode development",
-    "build": "webpack --mode production",
-    "prepare": "husky install"
+    "build": "webpack --mode production"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,json}": [
@@ -17,17 +16,9 @@
       "jest --bail --findRelatedTests --passWithNoTests"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vannizhang/react-redux-boilerplate.git"
-  },
   "keywords": [],
-  "author": "Jinnan Zhang",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/vannizhang/react-redux-boilerplate/issues"
-  },
-  "homepage": "https://github.com/vannizhang/react-redux-boilerplate",
+  "author": "",
+  "license": "",
   "devDependencies": {
     "@babel/core": "^7.22.5",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
@@ -78,6 +69,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "@mui/icons-material": "^5.11.16",
     "@reduxjs/toolkit": "1.9",
     "@types/arcgis-js-api": "^4.27.0",
     "@types/react": "^18.2.13",
