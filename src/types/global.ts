@@ -1,3 +1,5 @@
+import { CategoryType } from "@constants/index";
+
 export interface Product {
     _id: string;
     name: string;
@@ -12,4 +14,13 @@ export interface Product {
 export interface InitialState {
     products: Product[];
     currentElementId: string;
+}
+
+export interface InitialValues {
+    name: string,
+    price: number,
+    stock: number,
+    date: string,
+    category: CategoryType,
+    description: string,
 }

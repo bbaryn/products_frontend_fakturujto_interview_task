@@ -1,7 +1,5 @@
 import { DatePickerField } from '@components/DatePickerField/DatePickerField';
 import { FormTitle } from '@constants/index';
-import { useAppSelector } from '@store/hooks';
-import { selectProduct } from '@store/shape/selectors';
 import { addProduct, editProduct } from '@store/shape/slice';
 import { Product } from '@typing/global';
 import { Field, Form, Formik } from 'formik';
@@ -22,15 +20,7 @@ import {
 } from './styles';
 import useEditProduct from '@hooks/useEditProduct';
 import useAddProduct from '@hooks/useAddProduct';
-
-const initialValues = {
-    name: '',
-    price: '',
-    stock: '',
-    date: '',
-    category: CategoryType.LAPTOPS,
-    description: '',
-};
+import { setupInitialValues } from '@utils/setupInitialValues';
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -75,17 +65,6 @@ const FormikForm = () => {
         }
 
         navigate('/');
-    };
-
-    const setupInitialValues = (currentFormTitle: string) => {
-        switch (currentFormTitle) {
-            case FormTitle.ADD_FORM:
-                return initialValues;
-            case FormTitle.EDIT_FORM:
-                return useAppSelector(selectProduct);
-            default:
-                return initialValues;
-        }
     };
 
     return (
