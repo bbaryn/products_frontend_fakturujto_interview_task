@@ -8,6 +8,7 @@ import { DetailContainer } from '@components/DetailContainer/DetailContainer';
 import { FormTitle } from '@constants/index';
 import { useDispatch } from 'react-redux';
 import { addCurrentElementId, deleteProduct } from '@store/shape/slice';
+import useDeleteProduct from '@hooks/useDeleteProduct';
 
 interface Props {
     product: Product;
@@ -34,7 +35,12 @@ const ListElement = ({ product }: Props): JSX.Element => {
 
     const handleDeleteButtonClick = (e: MouseEvent<HTMLElement>) => {
         e.stopPropagation();
-        dispatch(deleteProduct(product._id));
+        useDeleteProduct(product._id).then(() => {
+            dispatch(deleteProduct(product._id));
+            alert('Product has been deleted');
+        })
+        .catch(() => alert('Something goes wrong'));
+
     };
 
     return (
