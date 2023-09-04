@@ -1,0 +1,6 @@
+version: '1'
+services:
+  frontend-fakturujto:
+    image: frontend-fakturujto
+    ports:
+      - 8080:8080
